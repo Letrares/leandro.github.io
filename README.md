@@ -89,7 +89,7 @@
   <div class="ring-wrap" id="ringWrap">
     <div class="display">
       <div class="time" id="displayTime">00:00</div>
-      <div class="status" id="displayStatus">Pronto para uso</div>
+      <div class="status" id="displayStatus"></div>
     </div>
   </div>
  
@@ -226,7 +226,6 @@
       <button onclick="pressPresetDigit('0')">0</button>
       <button class="primary" onclick="savePreset()">Salvar</button>
     </div>
-    <div id="presetTimePreview" class="center" style="margin-top:10px;color:var(--dim);font-size:.8rem">00:00</div>
     <button class="ghost" style="width:100%;margin-top:10px" onclick="go('ua8')">‹ Cancelar</button>
   </div>
  
@@ -271,22 +270,21 @@ function updateDisplay(status){
 function go(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  if(id==='ua1'){ seconds=0; total=0; digitBuffer=''; updateDisplay('Pronto para uso'); }
+  if(id==='ua1'){ seconds=0; total=0; digitBuffer=''; displayTime.textContent='00:00'; displayStatus.textContent=''; setRing(0); }
   if(id==='ua7'){ gramsBuffer=''; displayTime.textContent='0 g'; displayStatus.textContent='Digite o peso e toque Iniciar'; }
   if(id==='ua8'){ renderPresetManager(); }
-  if(id==='ua9'){ presetBuffer=''; presetTimePreview.textContent='00:00'; setupNamePicker(); }
+  if(id==='ua9'){ presetBuffer=''; displayTime.textContent='00:00'; displayStatus.textContent='Digite o tempo do preset'; setupNamePicker(); }
 }
 function pressDigit(d){
   digitBuffer += d;
   if(digitBuffer.length>4) digitBuffer = digitBuffer.slice(-4);
   const padded = digitBuffer.padStart(4,'0');
   displayTime.textContent = padded.slice(0,2)+':'+padded.slice(2,4);
-  displayStatus.textContent = 'Digite o tempo e toque Iniciar';
 }
 function clearTyped(){
   digitBuffer = '';
   displayTime.textContent = '00:00';
-  displayStatus.textContent = 'Pronto para uso';
+  displayStatus.textContent = '';
 }
 function startTyped(){
   if(!digitBuffer) return;
@@ -294,7 +292,7 @@ function startTyped(){
   const mm = parseInt(padded.slice(0,2),10), ss = parseInt(padded.slice(2,4),10);
   const s = mm*60+ss;
   digitBuffer = '';
-  if(s>0) quickStart(s, 'Tempo personalizado');
+  if(s>0) quickStart(s);
 }
 function quickStart(s, name){
   label = name; seconds = s; total = s;
@@ -323,7 +321,7 @@ function startDefrostTyped(){
   quickStart(s, 'Descongelando ' + grams + 'g');
 }
 function startCustom(){
-  quickStart(parseInt(customRange.value,10), 'Tempo personalizado');
+  quickStart(parseInt(customRange.value,10));
 }
 function runTimer(){
   paused = false; pauseBtn.textContent = 'Pausar';
@@ -386,11 +384,11 @@ function pressPresetDigit(d){
   presetBuffer += d;
   if(presetBuffer.length>4) presetBuffer = presetBuffer.slice(-4);
   const padded = presetBuffer.padStart(4,'0');
-  presetTimePreview.textContent = padded.slice(0,2)+':'+padded.slice(2,4);
+  displayTime.textContent = padded.slice(0,2)+':'+padded.slice(2,4);
 }
 function clearPresetDigits(){
   presetBuffer = '';
-  presetTimePreview.textContent = '00:00';
+  displayTime.textContent = '00:00';
 }
 const presetNameOptions = ['Café','Sopa','Pizza','Massa','Lanche','Bebida'];
 let nameOptions = [];

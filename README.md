@@ -149,7 +149,7 @@
       Receita: frango
     </button>
     <button onclick="go('ua8')">
-      <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.6"/><path d="M12 3.5v2M12 18.5v2M20.5 12h-2M5.5 12h-2M17.7 6.3l-1.4 1.4M7.7 16.3l-1.4 1.4M17.7 17.7l-1.4-1.4M7.7 7.7L6.3 6.3"/></svg>
+      <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
       Gerenciar presets
     </button>
     <button class="ghost" style="margin-top:6px" onclick="go('ua1')">Voltar</button>
@@ -195,14 +195,11 @@
   <!-- UA-8 Gerenciar presets -->
   <div class="screen" id="ua8">
     <label style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-      <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.6"/><path d="M12 3.5v2M12 18.5v2M20.5 12h-2M5.5 12h-2M17.7 6.3l-1.4 1.4M7.7 16.3l-1.4 1.4M17.7 17.7l-1.4-1.4M7.7 7.7L6.3 6.3"/></svg>
+      <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
       Gerenciar presets (máx. 2)
     </label>
     <div id="presetList"></div>
-    <button class="ghost" id="addPresetBtn" style="width:100%;justify-content:center;margin-top:4px" onclick="go('ua9')">
-      <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-      Adicionar preset
-    </button>
+    <button class="ghost" id="addPresetBtn" style="width:100%;justify-content:center;margin-top:4px" onclick="go('ua9')">+ Adicionar preset</button>
     <button class="ghost" style="width:100%;margin-top:10px" onclick="go('ua3')">‹ Voltar</button>
   </div>
  
@@ -432,3 +429,5 @@ function deletePresetConfirmed(){
 </script>
 </body>
 </html>
+ 
+

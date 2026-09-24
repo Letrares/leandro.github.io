@@ -199,7 +199,10 @@
       Gerenciar presets (máx. 2)
     </label>
     <div id="presetList"></div>
-    <button class="ghost" id="addPresetBtn" style="width:100%;justify-content:center;margin-top:4px" onclick="go('ua9')">+ Adicionar preset</button>
+    <button class="ghost" id="addPresetBtn" style="width:100%;justify-content:center;margin-top:4px" onclick="go('ua9')">
+      <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      Adicionar preset
+    </button>
     <button class="ghost" style="width:100%;margin-top:10px" onclick="go('ua3')">‹ Voltar</button>
   </div>
  
